@@ -49,7 +49,68 @@
 (function ($) {
 	'use strict';
 
+	// Register GSAP plugins
+	gsap.registerPlugin(ScrollTrigger);
+	gsap.registerPlugin(ScrollToPlugin);
 
+	// GSAP set
+	gsap.set("body", { autoAlpha: 1 });
+
+	// GSAP matchMedia
+	let mm = gsap.matchMedia();
+
+
+	/* ===================================
+	 * Smooth Scrolling Navigation
+	 * =================================== */
+	
+	// Handle smooth scrolling for navigation links
+	$(document).ready(function() {
+		// Target all navigation links that start with #
+		$('nav a[href^="#"], .tt-main-menu-list a[href^="#"]').on('click', function(e) {
+			e.preventDefault();
+			
+			var target = $(this).attr('href');
+			var $targetElement = $(target);
+			
+			// Check if target element exists
+			if ($targetElement.length) {
+				// Use GSAP ScrollToPlugin for smooth scrolling
+				gsap.to(window, {
+					duration: 1.2,
+					scrollTo: {
+						y: target,
+						offsetY: 80 // Offset for fixed header if needed
+					},
+					ease: "power2.inOut"
+				});
+			}
+		});
+		
+		// Also handle clicks on any other menu links with hash hrefs
+		$('.tt-btn[href^="#"], .menu-item a[href^="#"]').on('click', function(e) {
+			e.preventDefault();
+			
+			var target = $(this).attr('href');
+			var $targetElement = $(target);
+			
+			if ($targetElement.length) {
+				gsap.to(window, {
+					duration: 1.2,
+					scrollTo: {
+						y: target,
+						offsetY: 80
+					},
+					ease: "power2.inOut"
+				});
+			}
+		});
+	});
+
+
+	/* ===================================
+	 * Page header
+	 * =================================== */
 
 	// ==============================================
 	// Detect touch device (do not remove!!!)
@@ -2667,4 +2728,4 @@
 	});
 
 
-})(jQuery); 
+})(jQuery);
