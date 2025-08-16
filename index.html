@@ -1436,6 +1436,27 @@
 		<!-- Master JS -->
 		<script src="js/theme.js"></script>
 
+		<!-- More About Me Button Functionality -->
+		<script>
+		$(document).ready(function() {
+			$('#moreAboutMeBtn').on('click', function(e) {
+				e.preventDefault(); // Prevent default link behavior
+				$('#moreAboutMeExpandedContent').slideToggle(400); // Toggle visibility with slide effect
+				
+				// Change button text and data-hover attribute
+				var buttonSpan = $(this).find('span');
+				var currentText = buttonSpan.text();
+				
+				if (currentText === 'More About Me') {
+					buttonSpan.text('Show Less');
+					buttonSpan.attr('data-hover', 'Show Less');
+				} else {
+					buttonSpan.text('More About Me');
+					buttonSpan.attr('data-hover', 'More About Me');
+				}
+			});
+		});
+		</script>
 		<!-- More About Me expand/collapse functionality -->
 		<script>
 		$(document).ready(function() {
