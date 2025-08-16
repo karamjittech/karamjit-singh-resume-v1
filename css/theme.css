@@ -5154,6 +5154,21 @@ body:not(.is-mobile) .tt-accordion.tt-ac-hover .tt-accordion-item.active .tt-acc
 
 
 /* ------------------------------------------------------------- *
+ * Custom photo frame styling
+/* ------------------------------------------------------------- */
+
+.framed-photo {
+	border-radius: 8px; /* Slightly rounded corners for a modern look */
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+	border: 1px solid rgba(255, 255, 255, 0.1); /* Very light border for definition */
+	display: block; /* Ensures proper layout behavior */
+	max-width: 100%; /* Makes the image responsive within its container */
+	height: auto; /* Maintains the image's aspect ratio */
+	object-fit: cover; /* Ensures the image covers the area without distortion */
+}
+
+
+/* ------------------------------------------------------------- *
  * Horizontal accordion
 /* ------------------------------------------------------------- */
 
